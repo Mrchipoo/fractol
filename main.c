@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 11:57:45 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/29 12:01:12 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/29 13:35:06 by aabidar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fractol.h"
+
 
 void	ft_init(t_mlx *fractol, char **argv)
 {
@@ -50,7 +50,8 @@ void	ft_setup(t_mlx *data, char **argv)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp, &data->img.line_len, &data->img.endian);
+	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
+			&data->img.line_len, &data->img.endian);
 	ft_hooks(data);
 	ft_init(data, argv);
 }
@@ -59,8 +60,8 @@ int	main(int argc, char **argv)
 {
 	t_mlx	fractal;
 
-	if ((!ft_strcmp("Mandelbrot", argv[1]) && argc == 2)
-		|| (!ft_strcmp("Julia", argv[1]) && argc == 4))
+	if ((!ft_strcmp("Mandelbrot", argv[1]) && argc == 2) || (!ft_strcmp("Julia",
+				argv[1]) && argc == 4))
 	{
 		fractal.name = argv[1];
 		ft_setup(&fractal, argv);
