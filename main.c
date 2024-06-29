@@ -2,11 +2,18 @@
 
 void ft_init(t_mlx *fractol)
 {
-    fractol->iter = 100;
+    fractol->iter = 60;
     fractol->shift_x = 0.0;
     fractol->shift_y = 0.0;
     fractol->zoom = 1.0;
-    printf("im in 1 \n");
+}
+
+void ft_fill(t_mlx *fractol, char **argv)
+{
+    if (!ft_strncmp("mandelbort", argv[1], 10))
+        color_screen(fractol);
+    else if (!ft_strncmp("julia", argv[1], 5))
+        julia_render(fractol, argv);
 }
 
 void    ft_setup(t_mlx *fractol)
@@ -30,18 +37,18 @@ void    ft_setup(t_mlx *fractol)
     fractol->img.addr = mlx_get_data_addr(fractol->img.img, &fractol->img.bpp, &fractol->img.line_len, &fractol->img.endian);
     ft_hooks(fractol);
     ft_init(fractol);
-    printf("im in 2\n");
 }
 
 int main(int argc, char **argv)
 {
     t_mlx     fractal;
+
     if ((!ft_strncmp("mandelbort", argv[1], 10) && argc == 2)
         || (!ft_strncmp("julia", argv[1], 5) && argc == 4))
     {
         fractal.name = argv[1];
         ft_setup(&fractal);
-        color_screen(&fractal);
+        ft_fill(&fractal, argv);
         mlx_loop(fractal.mlx);
     }
     ft_argument_error();

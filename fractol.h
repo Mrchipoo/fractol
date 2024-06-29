@@ -55,6 +55,10 @@ void        color_screen(t_mlx *fractol);
 double      ft_scale(double pixel, double min, double max, int big);
 int         ft_strncmp(char *s1, char *s2, int n);
 void        ft_argument_error(void);
+void    ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol);
+void julia_render(t_mlx *fractol, char **argv);
+void pixel_put(t_img *img, int x, int y, int color);
+void ft_fill(t_mlx *fractol, char **argv);
 t_cordinate     ft_sum(t_cordinate z, t_cordinate c);
 t_cordinate     ft_square(t_cordinate z);
 

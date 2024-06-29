@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS= -Wall -Werror -Wextra -g3
-SRC = main.c string_utils.c math.c render.c hooks.c
+SRC = main.c string_utils.c math.c render.c hooks.c julia.c
 Header = fractol.h minilibx-linux/mlx.h
 MLX = minilibx-linux/libmlx.a -Iminilibx-linux -lX11 -lXext
 OBJECT = $(SRC:.c=.o)

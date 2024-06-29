@@ -25,9 +25,9 @@ int ft_key_hook(int keycode, t_mlx *fractol)
         fractol->shift_x -= (0.5 * fractol->zoom);
     else if (keycode == 45)
         fractol->iter -= 10;
-    else if (keycode == 63)
+    else if (keycode == 61)
         fractol->iter += 10;
-    color_screen(fractol);
+    ft_fill(fractol);
     return (0);
 }
 
@@ -36,9 +36,9 @@ int ft_mouse_hook(int keycode, int x, int y, t_mlx *fractol)
     (void)x;
     (void)y;
     printf("this key %d has been pressed\n",keycode);
-    if (keycode == 1)
+    if (keycode == 3)
         fractol->zoom = fractol->zoom * 1.05;
-    else if (keycode == 3)
+    else if (keycode == 1)
         fractol->zoom = fractol->zoom * 0.95;
     color_screen(fractol);
     return (0);

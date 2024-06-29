@@ -1,25 +1,20 @@
 #include "fractol.h"
 
-void pixel_put(t_img *img, int x, int y, int color)
-{
-    int pixel;
-
-    pixel = ((y * img->line_len) + (x * (img->bpp / 8)));
-    *((unsigned int *)(pixel + img->addr)) = color;
-}
-
-void color_screen(t_mlx *fractol)
+void julia_render(t_mlx *fractol, char **argv)
 {
     int x;
     int y;
+    t_cordinate c;
 
+    c.x = atof(argv[2]);
+    c.y = atof(argv[3]);
     y = 0;
     while (y < HEIGHT)
     {
         x = 0;
         while (x < WIDTH)
         {
-            ft_handle_pixel(x, y, fractol);
+            ft_julia_pixel(c, x, y, fractol);
             x++;
         }
         y++;
@@ -27,19 +22,16 @@ void color_screen(t_mlx *fractol)
     mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img.img, 0, 0);
 }
 
-void    ft_handle_pixel(int x, int y, t_mlx *fractol)
+void    ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol)
 {
     t_cordinate z;
     t_cordinate s;
-    t_cordinate c;
     int i;
     int color;
 
-    z.x = 0.0;
     i = 0;
-    z.y = 0.0;
-    c.x = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
-    c.y = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
+    z.x = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
+    z.y = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
     while (i < fractol->iter)
     {
         s.x = (z.x * z.x) - (z.y * z.y);;
