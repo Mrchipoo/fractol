@@ -35,6 +35,8 @@ typedef struct s_mlx
     double zoom;
     double shift_x;
     double shift_y;
+    double julia_x;
+    double julia_y;
 }   t_mlx;
 
 # define HEIGHT 800
@@ -49,16 +51,16 @@ typedef struct s_mlx
 
 
 void        ft_hooks(t_mlx *fractol);
-void        ft_setup(t_mlx *fractol);
+void        ft_setup(t_mlx *fractol, char **argv);
 void        ft_handle_pixel(int x, int y, t_mlx *fractol);
 void        color_screen(t_mlx *fractol);
 double      ft_scale(double pixel, double min, double max, int big);
-int         ft_strncmp(char *s1, char *s2, int n);
+int	        ft_strcmp(char *s1, char *s2);
 void        ft_argument_error(void);
-void    ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol);
-void julia_render(t_mlx *fractol, char **argv);
-void pixel_put(t_img *img, int x, int y, int color);
-void ft_fill(t_mlx *fractol, char **argv);
+void        ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol);
+void        julia_render(t_mlx *fractol);
+void        pixel_put(t_img *img, int x, int y, int color);
+void        ft_fill(t_mlx *fractol);
 t_cordinate     ft_sum(t_cordinate z, t_cordinate c);
 t_cordinate     ft_square(t_cordinate z);
 

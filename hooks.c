@@ -40,7 +40,7 @@ int ft_mouse_hook(int keycode, int x, int y, t_mlx *fractol)
         fractol->zoom = fractol->zoom * 1.05;
     else if (keycode == 1)
         fractol->zoom = fractol->zoom * 0.95;
-    color_screen(fractol);
+    ft_fill(fractol);
     return (0);
 }
 

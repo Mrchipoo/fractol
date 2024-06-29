@@ -1,13 +1,13 @@
 #include "fractol.h"
 
-void julia_render(t_mlx *fractol, char **argv)
+void julia_render(t_mlx *fractol)
 {
     int x;
     int y;
     t_cordinate c;
 
-    c.x = atof(argv[2]);
-    c.y = atof(argv[3]);
+    c.x = fractol->julia_x;
+    c.y = fractol->julia_y;
     y = 0;
     while (y < HEIGHT)
     {
