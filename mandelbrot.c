@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 14:05:32 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/29 14:08:12 by echoubby         ###   ########.fr       */
+/*   Created: 2024/06/29 14:07:12 by echoubby          #+#    #+#             */
+/*   Updated: 2024/06/29 14:51:32 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
 
-void	julia_render(t_mlx *fractol)
+void	pixel_put(t_img *img, int x, int y, int color)
 {
-	int			x;
-	int			y;
-	t_cordinate	c;
+	int	pixel;
 
-	c.x = fractol->julia_x;
-	c.y = fractol->julia_y;
+	pixel = ((y * img->line_len) + (x * (img->bpp / 8)));
+	*((unsigned int *)(pixel + img->addr)) = color;
+}
+
+void	color_screen(t_mlx *fractol)
+{
+	int	x;
+	int	y;
+	int	color;
+
 	x = 0;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
-			ft_julia_pixel(c, x, y, fractol);
+			color = ft_scale(x - y, GREEN, BLUE, fractol->iter);
+			ft_handle_pixel(x, y, fractol, color);
 			y++;
 		}
 		x++;
@@ -33,29 +40,27 @@ void	julia_render(t_mlx *fractol)
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img.img, 0, 0);
 }
 
-void	ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol)
+void	ft_handle_pixel(int x, int y, t_mlx *fractol, int color)
 {
 	t_cordinate	z;
-	t_cordinate	s;
+	t_cordinate	c;
 	int			i;
-	int			color;
 
+	z.x = 0.0;
 	i = 0;
-	z.y = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
-	z.x = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
+	z.y = 0.0;
+	c.x = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
+	c.y = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
 	while (i < fractol->iter)
 	{
-		s.x = (z.x * z.x) - (z.y * z.y);
-		s.y = 2 * z.x * z.y;
-		z.x = s.x + c.x;
-		z.y = s.y + c.y;
+		z = ft_sqaure_sum(z, c);
 		if (((z.x * z.x) + (z.y * z.y)) > 4)
 		{
-			color = ft_scale(i, RED, BLUE, fractol->iter);
+			color = ft_scale(i, TRANS, BLUE, fractol->iter);
 			pixel_put(&fractol->img, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	pixel_put(&fractol->img, x, y, GREEN);
+	pixel_put(&fractol->img, x, y, color);
 }

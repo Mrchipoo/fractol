@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/29 14:07:21 by echoubby          #+#    #+#             */
+/*   Updated: 2024/06/29 14:09:57 by echoubby         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "fractol.h"
 
 int	ft_close(t_mlx *fractol)
@@ -14,18 +25,18 @@ int	ft_key_hook(int keycode, t_mlx *fractol)
 {
 	if (keycode == 65307)
 		ft_close(fractol);
-	if (keycode == 65362) // up
+	if (keycode == 65362)
 		fractol->shift_y -= (0.5 * fractol->zoom);
-	else if (keycode == 65364) // down
+	else if (keycode == 65364)
 		fractol->shift_y += (0.5 * fractol->zoom);
-	else if (keycode == 65361) // left
+	else if (keycode == 65361)
 		fractol->shift_x += (0.5 * fractol->zoom);
-	else if (keycode == 65363) // right
+	else if (keycode == 65363)
 		fractol->shift_x -= (0.5 * fractol->zoom);
 	else if (keycode == 45)
-		fractol->iter -= 10;
+		fractol->iter -= 5;
 	else if (keycode == 61)
-		fractol->iter += 10;
+		fractol->iter += 5;
 	ft_fill(fractol);
 	return (0);
 }
