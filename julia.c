@@ -51,11 +51,11 @@ void	ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol)
 		z.y = s.y + c.y;
 		if (((z.x * z.x) + (z.y * z.y)) > 4)
 		{
-			color = ft_scale(i, RED, BLUE, fractol->iter);
+			color = ft_scale(i, BACK, WHITE, fractol->iter);
 			pixel_put(&fractol->img, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	pixel_put(&fractol->img, x, y, GREEN);
+	pixel_put(&fractol->img, x, y, WHITE);
 }

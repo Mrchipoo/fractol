@@ -56,7 +56,7 @@ void	ft_handle_pixel(int x, int y, t_mlx *fractol, int color)
 		z = ft_sqaure_sum(z, c);
 		if (((z.x * z.x) + (z.y * z.y)) > 4)
 		{
-			color = ft_scale(i, TRANS, BLUE, fractol->iter);
+			color = ft_scale(i, BACK, WHITE, fractol->iter);
 			pixel_put(&fractol->img, x, y, color);
 			return ;
 		}

@@ -36,12 +36,13 @@ void	ft_setup(t_mlx *data, char **argv)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		exit(-1);
+		ft_error();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, data->name);
 	if (data->win == NULL)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
+		ft_error();
 	}
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->img.img == NULL)
@@ -49,6 +50,7 @@ void	ft_setup(t_mlx *data, char **argv)
 		mlx_destroy_window(data->mlx, data->win);
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
+		ft_error();
 	}
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);

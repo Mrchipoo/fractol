@@ -57,7 +57,9 @@ typedef struct s_mlx
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 # define TRANS 0xEE46AA
+# define BACK 0x29bdc1
 
+void		ft_error(void);
 void		ft_hooks(t_mlx *fractol);
 void		ft_setup(t_mlx *fractol, char **argv);
 void		ft_handle_pixel(int x, int y, t_mlx *fractol, int color);

@@ -51,5 +51,11 @@ void	ft_argument_error(void)
 	ft_putendl_fd("U can use + to increase iteration or - to decrease\n", 2);
 	ft_putendl_fd("U can use arow keys to navigate the Set\n", 2);
 	ft_putendl_fd("U can use mouse Wheel to zoom in or out", 2);
-	exit(-1);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_error(void)
+{
+	ft_putendl_fd("error with malloc", 2);
+	exit(EXIT_FAILURE);
 }
