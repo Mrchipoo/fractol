@@ -8,16 +8,16 @@ void julia_render(t_mlx *fractol)
 
     c.x = fractol->julia_x;
     c.y = fractol->julia_y;
-    y = 0;
-    while (y < HEIGHT)
+    x = 0;
+    while (x < WIDTH)
     {
-        x = 0;
-        while (x < WIDTH)
+        y = 0;
+        while (y < HEIGHT)
         {
             ft_julia_pixel(c, x, y, fractol);
-            x++;
+            y++;
         }
-        y++;
+        x++;
     }
     mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img.img, 0, 0);
 }
@@ -30,8 +30,8 @@ void    ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol)
     int color;
 
     i = 0;
-    z.x = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
-    z.y = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
+    z.y = (ft_scale(x, -2, +2, WIDTH) * fractol->zoom) + fractol->shift_x;
+    z.x = (ft_scale(y, +2, -2, HEIGHT) * fractol->zoom) + fractol->shift_y;
     while (i < fractol->iter)
     {
         s.x = (z.x * z.x) - (z.y * z.y);;
