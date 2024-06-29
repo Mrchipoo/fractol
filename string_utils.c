@@ -34,6 +34,10 @@ void	ft_putendl_fd(char *s, int fd)
 
 void ft_argument_error(void)
 {
-	ft_putendl_fd("arguments enterd are wrong", 2);
+	ft_putendl_fd("arguments enterd are wrong\n", 2);
+	ft_putendl_fd("Example : ./fractol Mandelbrot\n\n./fractol Julia 0.0 0.8\n", 2);
+	ft_putendl_fd("U can use + to increase iteration or - to decrease\n", 2);
+	ft_putendl_fd("U can use arow keys to navigate the Set\n", 2);
+	ft_putendl_fd("U can use mouse Wheel to zoom in or out", 2);
 	exit(-1);
 }

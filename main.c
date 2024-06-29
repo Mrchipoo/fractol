@@ -17,7 +17,7 @@ void	ft_init(t_mlx *fractol, char **argv)
 	fractol->shift_x = 0.0;
 	fractol->shift_y = 0.0;
 	fractol->zoom = 1.0;
-	if (!ft_strcmp("julia", fractol->name))
+	if (!ft_strcmp("Julia", fractol->name))
 	{
 		fractol->julia_x = atof(argv[2]);
 		fractol->julia_y = atof(argv[3]);
@@ -26,9 +26,9 @@ void	ft_init(t_mlx *fractol, char **argv)
 
 void	ft_fill(t_mlx *fractol)
 {
-	if (!ft_strcmp("mandelbort", fractol->name))
+	if (!ft_strcmp("Mandelbrot", fractol->name))
 		color_screen(fractol);
-	else if (!ft_strcmp("julia", fractol->name))
+	else if (!ft_strcmp("Julia", fractol->name))
 		julia_render(fractol);
 }
 
@@ -59,8 +59,8 @@ int	main(int argc, char **argv)
 {
 	t_mlx	fractal;
 
-	if ((!ft_strcmp("mandelbort", argv[1]) && argc == 2)
-		|| (!ft_strcmp("julia", argv[1]) && argc == 4))
+	if ((!ft_strcmp("Mandelbrot", argv[1]) && argc == 2)
+		|| (!ft_strcmp("Julia", argv[1]) && argc == 4))
 	{
 		fractal.name = argv[1];
 		ft_setup(&fractal, argv);
