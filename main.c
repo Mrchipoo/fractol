@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aabidar <aabidar@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 11:57:45 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/29 13:35:06 by aabidar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "fractol.h"
 
 void	ft_init(t_mlx *fractol, char **argv)
@@ -19,8 +8,8 @@ void	ft_init(t_mlx *fractol, char **argv)
 	fractol->zoom = 1.0;
 	if (!ft_strcmp("Julia", fractol->name))
 	{
-		fractol->julia_x = atof(argv[2]);
-		fractol->julia_y = atof(argv[3]);
+		fractol->julia_x = ft_atof(argv[2]);
+		fractol->julia_y = ft_atof(argv[3]);
 	}
 }
 

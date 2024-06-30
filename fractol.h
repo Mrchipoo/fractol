@@ -12,7 +12,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
@@ -60,6 +60,7 @@ typedef struct s_mlx
 # define BACK 0x29bdc1
 
 void		ft_error(void);
+double		ft_atof(char *av);
 void		ft_hooks(t_mlx *fractol);
 void		ft_setup(t_mlx *fractol, char **argv);
 void		ft_handle_pixel(int x, int y, t_mlx *fractol, int color);
