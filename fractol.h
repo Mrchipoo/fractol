@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 14:07:37 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/29 14:10:56 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:39:08 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -60,6 +60,7 @@ typedef struct s_mlx
 # define BACK 0x29bdc1
 
 void		ft_error(void);
+void		ft_pars(char **argv);
 double		ft_atof(char *av);
 void		ft_hooks(t_mlx *fractol);
 void		ft_setup(t_mlx *fractol, char **argv);

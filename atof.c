@@ -13,7 +13,7 @@
 
 int	ft_isdigit(char n)
 {
-	if (n >= '0' && n <= '9')
+	if (n < 48 || n > 57)
 		return (0);
 	return (1);
 }
@@ -53,11 +53,16 @@ double	ft_atof(char *av)
 	sign = 1;
 	while (av[i] && (av[i] == 32 || (av[i] >= 9 && av[i] <= 13)))
 		i++;
-	while (av[i] == '-' || av[i] == '+')
+	if (av[i] == '-' || av[i] == '+')
 	{
 		if (av[i] == '-')
 			sign *= -1;
 		i++;
+	}
+	if (!ft_isdigit(av[i]))
+	{
+		ft_argument_error();
+		exit(EXIT_FAILURE);
 	}
 	res = ft_help_atof(av, i);
 	return (res * sign);

@@ -66,6 +66,8 @@ int	main(int argc, char **argv)
 				argv[1]) && argc == 4))
 	{
 		fractal.name = argv[1];
+		if (!ft_strcmp("Julia", fractal.name))
+			ft_pars(argv);
 		ft_setup(&fractal, argv);
 		ft_fill(&fractal);
 		mlx_loop(fractal.mlx);

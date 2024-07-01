@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 14:07:29 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/29 14:07:32 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:38:50 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
@@ -17,7 +17,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	if (s2 == NULL || *s2 == '\0')
-		return (0);
+		return (1);
 	while (s1[i] != '\0')
 	{
 		if (s1[i] == s2[i])
@@ -58,4 +58,13 @@ void	ft_error(void)
 {
 	ft_putendl_fd("error with malloc", 2);
 	exit(EXIT_FAILURE);
+}
+
+void	ft_pars(char **argv)
+{
+	double	x;
+	double	y;
+
+	x = ft_atof(argv[2]);
+	y = ft_atof(argv[3]);
 }
