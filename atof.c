@@ -29,13 +29,13 @@ double	ft_help_atof(char *av, int i)
 	res = 0;
 	while (av[i])
 	{
-		if (!ft_isdigit(av[i]))
+		if (ft_isdigit(av[i]))
 		{
 			res = res * 10 +(av[i] - 48);
 			if (flag == 1)
 				--j;
 		}
-		else if (av[i] == '.' && !ft_isdigit(av[i + 1]))
+		else if (av[i] == '.' && ft_isdigit(av[i + 1]))
 			flag = 1;
 		i++;
 	}
