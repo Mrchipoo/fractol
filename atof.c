@@ -6,10 +6,25 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 11:09:40 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/30 11:09:43 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:16:13 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
+
+void	ft_check(char *av, int i)
+{
+	while (av[i])
+	{
+		if (av[i] == '.' && ft_isdigit(av[i + 1]) && ft_isdigit(av[i - 1]))
+			i++;
+		else if (!ft_isdigit(av[i]))
+		{
+			ft_argument_error();
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+}
 
 int	ft_isdigit(char n)
 {
@@ -55,15 +70,12 @@ double	ft_atof(char *av)
 		i++;
 	if (av[i] == '-' || av[i] == '+')
 	{
+		ft_check(av, i + 1);
 		if (av[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	if (!ft_isdigit(av[i]))
-	{
-		ft_argument_error();
-		exit(EXIT_FAILURE);
-	}
+	ft_check(av, i);
 	res = ft_help_atof(av, i);
 	return (res * sign);
 }

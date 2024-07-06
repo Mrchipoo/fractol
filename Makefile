@@ -9,7 +9,7 @@ NAME = fractol
 
 all:$(NAME)
 
-$(NAME): $(OBJECT) $(fractol)
+$(NAME): $(OBJECT) $(Header)
 	$(CC) $(CFLAGS) $(OBJECT) $(MLX) -o $(NAME)
 clean:
 	rm -f $(OBJECT)

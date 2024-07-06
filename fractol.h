@@ -60,6 +60,7 @@ typedef struct s_mlx
 # define BACK 0x29bdc1
 
 void		ft_error(void);
+void		ft_check(char *av, int i);
 void		ft_pars(char **argv);
 double		ft_atof(char *av);
 void		ft_hooks(t_mlx *fractol);
@@ -68,6 +69,7 @@ void		ft_handle_pixel(int x, int y, t_mlx *fractol, int color);
 void		color_screen(t_mlx *fractol);
 double		ft_scale(double pixel, double min, double max, int big);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_isdigit(char n);
 void		ft_argument_error(void);
 void		ft_julia_pixel(t_cordinate c, int x, int y, t_mlx *fractol);
 void		julia_render(t_mlx *fractol);
